@@ -1,0 +1,1 @@
+export const LOG_TYPES = ['INFO', 'WARN', 'ERROR'];
