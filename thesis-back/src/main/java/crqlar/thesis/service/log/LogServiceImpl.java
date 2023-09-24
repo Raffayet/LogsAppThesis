@@ -3,11 +3,11 @@ package crqlar.thesis.service.log;
 import crqlar.thesis.dto.LogDTO;
 import crqlar.thesis.model.Log;
 import crqlar.thesis.repository.LogRepository;
-import crqlar.thesis.utils.NumberGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.swing.*;
 import java.time.LocalDateTime;
 
 @Service
