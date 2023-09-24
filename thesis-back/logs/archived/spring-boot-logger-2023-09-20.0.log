@@ -304,7 +304,7 @@ ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
-	at crqlar.thesis.MockAppApplication.main(MockAppApplication.java:10)
+	at crqlar.thesis.ThesisApplication.main(MockAppApplication.java:10)
 Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
 ERROR in ch.qos.logback.core.joran.action.AppenderAction - Could not create an Appender of type [crqlar/thesis/service/log/CustomLogAppenderImpl.java]. ch.qos.logback.core.util.DynamicClassLoadingException: Failed to instantiate type crqlar/thesis/service/log/CustomLogAppenderImpl.java
 ERROR in ch.qos.logback.core.joran.spi.Interpreter@47:90 - ActionException in Action for tag [appender] ch.qos.logback.core.joran.spi.ActionException: ch.qos.logback.core.util.DynamicClassLoadingException: Failed to instantiate type crqlar/thesis/service/log/CustomLogAppenderImpl.java
@@ -343,7 +343,7 @@ ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
-	at crqlar.thesis.MockAppApplication.main(MockAppApplication.java:10)
+	at crqlar.thesis.ThesisApplication.main(MockAppApplication.java:10)
 Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
 ERROR in ch.qos.logback.core.ConsoleAppender[CONSOLE] - No encoder set for the appender named "CONSOLE".
 ERROR in ch.qos.logback.core.joran.action.AppenderAction - Could not create an Appender of type [com.example.CustomLogAppender]. ch.qos.logback.core.util.DynamicClassLoadingException: Failed to instantiate type com.example.CustomLogAppender
@@ -381,7 +381,7 @@ ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
-	at crqlar.thesis.MockAppApplication.main(MockAppApplication.java:10)
+	at crqlar.thesis.ThesisApplication.main(MockAppApplication.java:10)
 Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
 ERROR in ch.qos.logback.core.ConsoleAppender[CONSOLE] - No encoder set for the appender named "CONSOLE".
 ERROR in ch.qos.logback.core.joran.action.AppenderAction - Could not create an Appender of type [src/main/java/crqlar/thesis/service/log/CustomLogAppenderImpl.java]. ch.qos.logback.core.util.DynamicClassLoadingException: Failed to instantiate type src/main/java/crqlar/thesis/service/log/CustomLogAppenderImpl.java
@@ -418,7 +418,7 @@ ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
-	at crqlar.thesis.MockAppApplication.main(MockAppApplication.java:10)
+	at crqlar.thesis.ThesisApplication.main(MockAppApplication.java:10)
 Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
 ERROR in ch.qos.logback.core.joran.action.AppenderAction - Could not create an Appender of type [src/main/java/crqlar/thesis/service/log/CustomLogAppenderImpl.java]. ch.qos.logback.core.util.DynamicClassLoadingException: Failed to instantiate type src/main/java/crqlar/thesis/service/log/CustomLogAppenderImpl.java
 ERROR in ch.qos.logback.core.joran.spi.Interpreter@54:104 - ActionException in Action for tag [appender] ch.qos.logback.core.joran.spi.ActionException: ch.qos.logback.core.util.DynamicClassLoadingException: Failed to instantiate type src/main/java/crqlar/thesis/service/log/CustomLogAppenderImpl.java
@@ -671,7 +671,7 @@ java.lang.IllegalStateException: Error processing condition on org.springframewo
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
-	at crqlar.thesis.MockAppApplication.main(MockAppApplication.java:10)
+	at crqlar.thesis.ThesisApplication.main(MockAppApplication.java:10)
 Caused by: java.lang.IllegalStateException: Failed to introspect Class [org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@1d44bcfa]
 	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:485)
 	at org.springframework.util.ReflectionUtils.doWithMethods(ReflectionUtils.java:361)
@@ -733,7 +733,7 @@ java.lang.IllegalStateException: Failed to introspect Class [org.springframework
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
-	at crqlar.thesis.MockAppApplication.main(MockAppApplication.java:10)
+	at crqlar.thesis.ThesisApplication.main(MockAppApplication.java:10)
 Caused by: java.lang.NoClassDefFoundError: org/springframework/security/web/access/WebInvocationPrivilegeEvaluator
 	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
 	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3402)
@@ -769,7 +769,7 @@ java.lang.IllegalStateException: Error processing condition on org.springframewo
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
-	at crqlar.thesis.MockAppApplication.main(MockAppApplication.java:10)
+	at crqlar.thesis.ThesisApplication.main(MockAppApplication.java:10)
 Caused by: java.lang.IllegalStateException: Failed to introspect Class [org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@1d44bcfa]
 	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:485)
 	at org.springframework.util.ReflectionUtils.doWithMethods(ReflectionUtils.java:361)
@@ -831,7 +831,7 @@ java.lang.IllegalStateException: Failed to introspect Class [org.springframework
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
-	at crqlar.thesis.MockAppApplication.main(MockAppApplication.java:10)
+	at crqlar.thesis.ThesisApplication.main(MockAppApplication.java:10)
 Caused by: java.lang.NoClassDefFoundError: org/springframework/security/web/SecurityFilterChain
 	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
 	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3402)
@@ -867,7 +867,7 @@ java.lang.IllegalStateException: Error processing condition on org.springframewo
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
-	at crqlar.thesis.MockAppApplication.main(MockAppApplication.java:10)
+	at crqlar.thesis.ThesisApplication.main(MockAppApplication.java:10)
 Caused by: java.lang.IllegalStateException: Failed to introspect Class [org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@1d44bcfa]
 	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:485)
 	at org.springframework.util.ReflectionUtils.doWithMethods(ReflectionUtils.java:361)
@@ -929,7 +929,7 @@ java.lang.IllegalStateException: Failed to introspect Class [org.springframework
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
-	at crqlar.thesis.MockAppApplication.main(MockAppApplication.java:10)
+	at crqlar.thesis.ThesisApplication.main(MockAppApplication.java:10)
 Caused by: java.lang.NoClassDefFoundError: org/springframework/security/web/SecurityFilterChain
 	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
 	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3402)
@@ -965,7 +965,7 @@ java.lang.IllegalStateException: Error processing condition on org.springframewo
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
-	at crqlar.thesis.MockAppApplication.main(MockAppApplication.java:10)
+	at crqlar.thesis.ThesisApplication.main(MockAppApplication.java:10)
 Caused by: java.lang.IllegalStateException: Failed to introspect Class [org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@1d44bcfa]
 	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:485)
 	at org.springframework.util.ReflectionUtils.doWithMethods(ReflectionUtils.java:361)
@@ -1027,7 +1027,7 @@ java.lang.IllegalStateException: Failed to introspect Class [org.springframework
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
-	at crqlar.thesis.MockAppApplication.main(MockAppApplication.java:10)
+	at crqlar.thesis.ThesisApplication.main(MockAppApplication.java:10)
 Caused by: java.lang.NoClassDefFoundError: org/springframework/security/web/access/WebInvocationPrivilegeEvaluator
 	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
 	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3402)
