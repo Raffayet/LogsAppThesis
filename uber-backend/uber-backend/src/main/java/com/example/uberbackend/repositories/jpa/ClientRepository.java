@@ -1,4 +1,4 @@
-package com.example.uberbackend.repositories;
+package com.example.uberbackend.repositories.jpa;
 import com.example.uberbackend.model.Client;
 import com.example.uberbackend.model.FavoriteRoute;
 import com.example.uberbackend.model.Message;

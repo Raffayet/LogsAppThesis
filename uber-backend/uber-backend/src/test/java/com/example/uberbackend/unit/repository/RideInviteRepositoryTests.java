@@ -2,20 +2,17 @@ package com.example.uberbackend.unit.repository;
 
 import com.example.uberbackend.model.RideInvite;
 import com.example.uberbackend.model.enums.RideInviteStatus;
-import com.example.uberbackend.repositories.RideInviteRepository;
-import com.example.uberbackend.repositories.VehicleTypeRepository;
+import com.example.uberbackend.repositories.jpa.RideInviteRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.beans.HasPropertyWithValue.hasProperty;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

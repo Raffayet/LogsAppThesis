@@ -8,7 +8,7 @@ describe('DriverService', () => {
   let service: DriverService;
   let httpTestingController: HttpTestingController;
 
-  let url = 'http://localhost:8081/api';
+  let url = 'https://localhost:8081/api';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -40,6 +40,6 @@ describe('DriverService', () => {
     req.flush(vehicleTypes);
 
   });
-  
+
 
 });

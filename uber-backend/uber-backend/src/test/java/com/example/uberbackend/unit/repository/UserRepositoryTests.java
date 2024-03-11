@@ -1,17 +1,13 @@
 package com.example.uberbackend.unit.repository;
 
-import com.example.uberbackend.model.Role;
 import com.example.uberbackend.model.User;
-import com.example.uberbackend.model.enums.RoleType;
-import com.example.uberbackend.repositories.RoleRepository;
-import com.example.uberbackend.repositories.UserRepository;
+import com.example.uberbackend.repositories.jpa.RoleRepository;
+import com.example.uberbackend.repositories.jpa.UserRepository;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.swing.text.html.Option;
 import javax.transaction.Transactional;
 
 import java.util.ArrayList;

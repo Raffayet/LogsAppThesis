@@ -1,12 +1,10 @@
 package com.example.uberbackend.unit.repository;
 
 import com.example.uberbackend.model.Ride;
-import com.example.uberbackend.model.User;
 import com.example.uberbackend.model.enums.RideStatus;
-import com.example.uberbackend.repositories.RideRepository;
+import com.example.uberbackend.repositories.jpa.RideRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.core.AutoConfigureCache;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

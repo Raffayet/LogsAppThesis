@@ -7,29 +7,20 @@ import com.example.uberbackend.exception.NoAvailableDriversException;
 import com.example.uberbackend.exception.RideNotFoundException;
 import com.example.uberbackend.model.*;
 import com.example.uberbackend.model.enums.DrivingStatus;
-import com.example.uberbackend.model.enums.RideStatus;
-import com.example.uberbackend.repositories.*;
+import com.example.uberbackend.repositories.jpa.*;
 import com.example.uberbackend.service.DriverService;
 import com.example.uberbackend.service.MapService;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cglib.core.Local;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
-
-import okhttp3.Request;
 
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.times;

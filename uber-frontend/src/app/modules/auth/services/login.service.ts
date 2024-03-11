@@ -21,12 +21,12 @@ export class LoginService {
       password: credentials.value.password
     }
 
-    return this.http.post("http://localhost:8081/api/auth/login", data);
+    return this.http.post("https://localhost:8081/api/auth/login", data);
   }
 
   socialLogIn(email: string) : Observable<any> {
 
     let result = undefined;
-    return this.http.post("http://localhost:8081/api/auth/social-login", email);
+    return this.http.post("https://localhost:8081/api/auth/social-login", email);
   }
 }

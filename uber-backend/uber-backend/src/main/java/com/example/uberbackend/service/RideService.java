@@ -9,12 +9,15 @@ import com.example.uberbackend.model.Driver;
 import com.example.uberbackend.model.Point;
 import com.example.uberbackend.model.Ride;
 import com.example.uberbackend.model.VehicleType;
+import com.example.uberbackend.model.elastic.ElasticRide;
 import com.example.uberbackend.model.enums.DrivingStatus;
 import com.example.uberbackend.model.enums.RideStatus;
-import com.example.uberbackend.repositories.DriverRepository;
-import com.example.uberbackend.repositories.RideRepository;
-import com.example.uberbackend.repositories.VehicleTypeRepository;
+import com.example.uberbackend.repositories.jpa.DriverRepository;
+import com.example.uberbackend.repositories.elastic.ElasticRideRepository;
+import com.example.uberbackend.repositories.jpa.RideRepository;
+import com.example.uberbackend.repositories.jpa.VehicleTypeRepository;
 import lombok.AllArgsConstructor;
+import org.elasticsearch.search.aggregations.metrics.InternalHDRPercentiles;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
@@ -38,6 +41,7 @@ public class RideService {
     private final MapService mapService;
     private final VehicleTypeRepository vehicleTypeRepository;
     private final DriverRepository driverRepository;
+    private final ElasticRideRepository elasticRideRepository;
 
     public Page<Ride> findAll(Pageable pageable) {
         return rideRepository.findAll(pageable);
@@ -187,5 +191,16 @@ public class RideService {
     public Page<Ride> findEndedDriversRidesByEmail(Pageable paging, String email) {
         Page<Ride> endedRides = rideRepository.findAllByDriverEmailAndRideStatus(email, RideStatus.ENDED, paging);
         return endedRides;
+    }
+
+    public Iterable<ElasticRide> searchRidesByVehicleType() {
+        return elasticRideRepository.findAll();
+    }
+
+    public String addWord(String word) {
+//        ElasticRide elasticRide = new ElasticRide();
+//        elasticRide.setWord(word);
+//        elasticRideRepository.save(elasticRide);
+        return "Success";
     }
 }

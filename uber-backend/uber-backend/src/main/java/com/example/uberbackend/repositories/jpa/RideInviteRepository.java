@@ -1,4 +1,4 @@
-package com.example.uberbackend.repositories;
+package com.example.uberbackend.repositories.jpa;
 import com.example.uberbackend.model.RideInvite;
 import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;

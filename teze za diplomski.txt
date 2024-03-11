@@ -1,0 +1,22 @@
+- install elasticsearch & kibana
+- podesavanje sertifikata
+- pokretanje elasticsearch.bat i kibana.bat skripti
+- @Document(indexName = "ride") u model Ride
+- poseban repo: @Repository
+public interface ElasticRideRepository extends ElasticsearchRepository<Ride, Long> {
+    List<Ride> findByVehicleType(String vehicleType);
+}
+- dodavanje sertifikata u javu koristeci keytool komandu
+- curl -X GET "localhost:9200/ride/_search?pretty" provera indeksiranih entiteta od strane elastic search-a
+- ubacivanje elastic search client-a: <dependency>
+			<groupId>org.elasticsearch.client</groupId>
+			<artifactId>elasticsearch-rest-client-sniffer</artifactId>
+			<version>8.12.2</version>
+		</dependency>
+
+- kreiranje sertifikata na server strani (spring): 
+"C:\Program Files\Java\jdk-11\bin\keytool" -genkeypair -alias your-alias -keyalg RSA -keysize 2048 -storetype JKS -keystore certificate.jks -validity 3650  
+server.ssl.key-store=classpath:keystore/certificate.jks
+server.ssl.key-store-password=keypass
+server.ssl.keyStoreType=JKS
+server.ssl.keyAlias=spring-alias

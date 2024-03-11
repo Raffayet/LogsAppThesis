@@ -1,8 +1,7 @@
 package com.example.uberbackend.unit.repository;
 
 import com.example.uberbackend.model.ActivateAccountToken;
-import com.example.uberbackend.repositories.ActivateAccountTokenRepository;
-import com.example.uberbackend.repositories.MessageRepository;
+import com.example.uberbackend.repositories.jpa.ActivateAccountTokenRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,7 +2,7 @@ package com.example.uberbackend.unit.repository;
 
 import com.example.uberbackend.model.Driver;
 import com.example.uberbackend.model.enums.DrivingStatus;
-import com.example.uberbackend.repositories.DriverRepository;
+import com.example.uberbackend.repositories.jpa.DriverRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

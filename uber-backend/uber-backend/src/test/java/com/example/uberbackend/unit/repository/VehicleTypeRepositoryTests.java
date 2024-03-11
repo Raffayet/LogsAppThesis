@@ -1,12 +1,8 @@
 package com.example.uberbackend.unit.repository;
 
-import com.example.uberbackend.model.User;
 import com.example.uberbackend.model.VehicleType;
-import com.example.uberbackend.repositories.RoleRepository;
-import com.example.uberbackend.repositories.UserRepository;
-import com.example.uberbackend.repositories.VehicleTypeRepository;
+import com.example.uberbackend.repositories.jpa.VehicleTypeRepository;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -17,7 +13,6 @@ import java.util.Optional;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.beans.HasPropertyWithValue.hasProperty;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest

@@ -48,7 +48,7 @@ export class LocationPickerComponent implements OnInit{
     }
 
   ngOnInit(): void {
-    this.loggedUser = this.tokenUtilsService.getUserFromToken();  
+    this.loggedUser = this.tokenUtilsService.getUserFromToken();
     if(this.loggedUser != null){
       this.clientService.getFavoriteRoutes(this.loggedUser?.email as string).subscribe({
         next: data => {
@@ -56,12 +56,12 @@ export class LocationPickerComponent implements OnInit{
         },
         error: error => {
           console.log(error);
-            
+
         }
       });
     }
   }
-  
+
   changePageNumber(){
     this.pageNum.emit(2);
   }
@@ -79,17 +79,17 @@ export class LocationPickerComponent implements OnInit{
 
   drop(event: CdkDragDrop<MapSearchResult[]>) {
     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    moveItemInArray(this.stateManagement.inputValues, event.previousIndex, event.currentIndex);      
-    moveItemInArray(this.stateManagement.mapa.locations, event.previousIndex, event.currentIndex);  
+    moveItemInArray(this.stateManagement.inputValues, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.stateManagement.mapa.locations, event.previousIndex, event.currentIndex);
     this.stateManagement.mapa.removePreviousRoute();
     this.automaticallyFindPath("Custom");
   }
 
-  searchOptions(index: number) : void {      
+  searchOptions(index: number) : void {
     let results : MapSearchResult[];
 
     this.mapService.search(this.stateManagement.inputValues[index])
-    .subscribe(res => {      
+    .subscribe(res => {
       results = this.mapService.convertSearchResultsToList(res);
       this.options[index] = of(results);
     });
@@ -97,24 +97,24 @@ export class LocationPickerComponent implements OnInit{
 
   pinLocation(option: MapSearchResult, index: number) : void {
     this.stateManagement.rideRequest.locations[index] = option;
-    
+
     this.stateManagement.mapa.pinNewResult(option, index);
     this.automaticallyFindPath("Custom");
   }
 
-  deleteLocation(index: number) : void {   
+  deleteLocation(index: number) : void {
       this.stateManagement.rideRequest.locations.splice(index, 1);
       this.stateManagement.inputValues.splice(index, 1);
-      this.stateManagement.mapa.deletePin(index);   
+      this.stateManagement.mapa.deletePin(index);
       this.automaticallyFindPath("Custom");
   }
 
-  addLocation(index: number) : void { 
+  addLocation(index: number) : void {
     console.log(this.stateManagement.rideRequest);
     console.log(this.stateManagement.inputValues);
     console.log(this.stateManagement.mapa.locations);
-    
-    this.stateManagement.rideRequest.locations.length < 5 ? (this.stateManagement.rideRequest.locations[index].displayName === "") ?  this.toastr.warning('Choose location for current stop!') : 
+
+    this.stateManagement.rideRequest.locations.length < 5 ? (this.stateManagement.rideRequest.locations[index].displayName === "") ?  this.toastr.warning('Choose location for current stop!') :
     this.stateManagement.rideRequest.locations.push({
     displayName: this.stateManagement.rideRequest.locations.length + "",
     lon: "",
@@ -123,14 +123,14 @@ export class LocationPickerComponent implements OnInit{
 
   getPins(){
     let markers: Array<L.Marker> = this.stateManagement.mapa.getPins();
-    console.log(markers);  
-    if (window.location.href === environment.frontURL) 
-      this.router.navigateByUrl('login') 
+    console.log(markers);
+    if (window.location.href === environment.frontURL)
+      this.router.navigateByUrl('login')
   }
 
   automaticallyFindPath(routeType: string): void{
     this.stateManagement.mapa.reset();
-    
+
     this.mapService.automaticallyFindPath(routeType, this.stateManagement.mapa.locations).subscribe({
       next: data => {
           let coords: Array<Point> = data.atomicPoints;
@@ -166,11 +166,11 @@ export class LocationPickerComponent implements OnInit{
   }
 
   onSelectedRoute(route: FavoriteRouteDto): void{
-    
+
       for(let i in route.locations){
         this.stateManagement.inputValues[i] = route.locations[i].displayName;
         this.stateManagement.rideRequest.locations[i] = route.locations[i];
-        this.pinLocation(route.locations[i], parseInt(i)); 
+        this.pinLocation(route.locations[i], parseInt(i));
         this.addLocation(parseInt(i));
       }
 

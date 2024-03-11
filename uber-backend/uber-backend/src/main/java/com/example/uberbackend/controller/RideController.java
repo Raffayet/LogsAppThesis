@@ -4,6 +4,7 @@ import com.example.uberbackend.dto.*;
 import com.example.uberbackend.model.Driver;
 import com.example.uberbackend.dto.DriveInvitationDto;
 import com.example.uberbackend.model.Ride;
+import com.example.uberbackend.model.elastic.ElasticRide;
 import com.example.uberbackend.service.DriverService;
 import com.example.uberbackend.service.RideService;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/rides")
@@ -85,5 +87,15 @@ public class RideController {
     public Page<Ride> getEndedDriversRides(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "5") int size, @RequestParam String email) {
         Pageable paging = PageRequest.of(page, size);
         return rideService.findEndedDriversRidesByEmail(paging, email);
+    }
+
+    @GetMapping("get-all-rides")
+    public Iterable<ElasticRide> getRideByVehicleType() {
+        return rideService.searchRidesByVehicleType();
+    }
+
+    @GetMapping("add-word")
+    public String addWord(@RequestParam String word) {
+        return rideService.addWord(word);
     }
 }

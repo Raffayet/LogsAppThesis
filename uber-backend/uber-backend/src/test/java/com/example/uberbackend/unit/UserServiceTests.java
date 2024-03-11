@@ -1,9 +1,8 @@
 package com.example.uberbackend.unit;
 
-import com.example.uberbackend.exception.RideNotFoundException;
 import com.example.uberbackend.exception.UserNotFoundException;
 import com.example.uberbackend.model.User;
-import com.example.uberbackend.repositories.UserRepository;
+import com.example.uberbackend.repositories.jpa.UserRepository;
 import com.example.uberbackend.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;

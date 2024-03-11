@@ -1,11 +1,9 @@
 package com.example.uberbackend.task;
 
-import com.example.uberbackend.dto.DriveRequestDto;
 import com.example.uberbackend.dto.RatingExpirationDto;
-import com.example.uberbackend.dto.RideReminderDto;
 import com.example.uberbackend.model.Client;
 import com.example.uberbackend.model.Ride;
-import com.example.uberbackend.repositories.RideRepository;
+import com.example.uberbackend.repositories.jpa.RideRepository;
 import lombok.SneakyThrows;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 

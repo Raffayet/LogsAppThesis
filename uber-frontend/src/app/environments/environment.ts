@@ -1,7 +1,7 @@
 export const environment = {
     production: false,
     title: 'Local Environment Heading',
-    apiURL: 'http://localhost:8081/api',
+    apiURL: 'https://localhost:8081/api',
     frontURL: 'http://localhost:4200/',
     usdRsdRatio: 111.74,
     maxPeoplePerDrive: 3,

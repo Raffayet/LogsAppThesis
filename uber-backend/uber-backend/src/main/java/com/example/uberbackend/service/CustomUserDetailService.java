@@ -1,7 +1,6 @@
 package com.example.uberbackend.service;
 
-import com.example.uberbackend.model.User;
-import com.example.uberbackend.repositories.UserRepository;
+import com.example.uberbackend.repositories.jpa.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

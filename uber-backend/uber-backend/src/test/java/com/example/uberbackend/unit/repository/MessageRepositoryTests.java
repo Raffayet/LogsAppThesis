@@ -1,15 +1,13 @@
 package com.example.uberbackend.unit.repository;
 
 import com.example.uberbackend.model.Message;
-import com.example.uberbackend.model.User;
-import com.example.uberbackend.repositories.MessageRepository;
+import com.example.uberbackend.repositories.jpa.MessageRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;

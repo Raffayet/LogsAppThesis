@@ -21,7 +21,7 @@ public class EmailService{
 
         mail.setTo(email);
         mail.setSubject("Activate account");
-        String link = "http://localhost:8081/api/user/activate?token=" + token;
+        String link = "https://localhost:8081/api/user/activate?token=" + token;
         mail.setText("You have successfully registered on Uber App, to Log In please activate account here: " + link + ".");
         try{
         mailSender.send(mail);

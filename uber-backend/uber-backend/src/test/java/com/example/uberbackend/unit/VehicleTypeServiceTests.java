@@ -1,7 +1,7 @@
 package com.example.uberbackend.unit;
 
 import com.example.uberbackend.exception.NoVehicleTypesException;
-import com.example.uberbackend.repositories.VehicleTypeRepository;
+import com.example.uberbackend.repositories.jpa.VehicleTypeRepository;
 import com.example.uberbackend.service.VehicleTypeService;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

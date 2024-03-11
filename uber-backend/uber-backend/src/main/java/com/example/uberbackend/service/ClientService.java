@@ -4,7 +4,7 @@ import com.example.uberbackend.dto.*;
 import com.example.uberbackend.exception.*;
 import com.example.uberbackend.model.*;
 import com.example.uberbackend.model.enums.RideInviteStatus;
-import com.example.uberbackend.repositories.*;
+import com.example.uberbackend.repositories.jpa.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 

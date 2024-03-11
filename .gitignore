@@ -1,3 +1,5 @@
 env/
 locust/__pycache__
 locust/.idea
+elasticsearch-8.12.2-windows-x86_64/
+kibana-8.12.2/

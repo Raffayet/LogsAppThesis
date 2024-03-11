@@ -1,4 +1,4 @@
-package com.example.uberbackend.repositories;
+package com.example.uberbackend.repositories.jpa;
 
 import com.example.uberbackend.dto.PersonalInfoUpdateDto;
 import com.example.uberbackend.model.User;

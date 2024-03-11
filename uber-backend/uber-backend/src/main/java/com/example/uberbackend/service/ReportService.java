@@ -5,8 +5,7 @@ import com.example.uberbackend.dto.ReportRequestDto;
 import com.example.uberbackend.dto.ReportResponseDto;
 import com.example.uberbackend.model.*;
 import com.example.uberbackend.model.enums.RoleType;
-import com.example.uberbackend.repositories.RideRepository;
-import com.example.uberbackend.repositories.UserRepository;
+import com.example.uberbackend.repositories.jpa.RideRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

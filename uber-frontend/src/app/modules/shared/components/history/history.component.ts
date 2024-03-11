@@ -76,11 +76,11 @@ export class HistoryComponent implements OnInit{
   constructor(private rideService: RideService, private tokenUtilsService: TokenUtilsService, private dialog: MatDialog, private driverService: DriverService, private orderDialog: MatDialog, private paypalService: PaypalService, private clientsDialog: MatDialog, private userService: UserService, private ratingDialog: MatDialog, private toastrService: ToastrService, private clientService: ClientService){}
 
   ngOnInit() {
-    if(this.tokenUtilsService.getRoleFromToken() == "CLIENT"){   
+    if(this.tokenUtilsService.getRoleFromToken() == "CLIENT"){
       this.userType = "CLIENT";
       this.email = this.tokenUtilsService.getUsernameFromToken() as string;
       this.displayedColumns = this.displayedColumnsClients;
-      this.loggedUser = this.tokenUtilsService.getUserFromToken(); 
+      this.loggedUser = this.tokenUtilsService.getUserFromToken();
       this.getAlreadyRatedRideIds(this.loggedUser?.email as string);
       this.getAmountOfTokens();
 
@@ -88,7 +88,7 @@ export class HistoryComponent implements OnInit{
       this.stompClient = over(Sock);
       this.stompClient.connect({}, this.onConnected, (error) => {
         this.onError(error);
-      }); 
+      });
     }
 
     else if(this.tokenUtilsService.getRoleFromToken() == "DRIVER")
@@ -104,14 +104,14 @@ export class HistoryComponent implements OnInit{
       this.userType = "ADMIN";
       this.getUsers();
     }
-  } 
+  }
 
   onConnected = () => {
     this.stompClient.subscribe("/user/" + this.loggedUser?.email  + "/disable-rating", (data) => this.onRatingExpired(data));
   }
 
   onError = (error: string | Frame) => {
-    console.log(error);    
+    console.log(error);
   }
 
   onRatingExpired(payload: StompMessage)
@@ -159,7 +159,7 @@ export class HistoryComponent implements OnInit{
           else{
             this.openOrderDialog(locations, ride);
           }
-  
+
       },
       error: error => {
           console.error('There was an error!', error);
@@ -199,12 +199,12 @@ export class HistoryComponent implements OnInit{
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    
+
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   getAmountOfTokens(){
-    this.paypalService.getAmountOfTokens(this.loggedUser?.email as string).subscribe(      
+    this.paypalService.getAmountOfTokens(this.loggedUser?.email as string).subscribe(
       (data: number) => this.currentAmount = data
     );
   }
@@ -236,6 +236,31 @@ export class HistoryComponent implements OnInit{
       let formattedEndTime = day + "/" + month + "/" + year + " " + hours + ":" + minutes + ":" + seconds;
       this.rides[i].formattedEndTime = formattedEndTime;
     }
+  }
+
+  getRideByVehicleType(){
+    this.rideService.getRideByVehicleType()
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+        },
+        error: (err) => {
+          console.log(err.error.message);
+        },
+      });
+  }
+
+  addWord(){
+    let word = "wow";
+    this.rideService.addWord(word)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+        },
+        error: (err) => {
+          console.log(err.error.message);
+        },
+      });
   }
 
   private getHistoryOfRides(request: Request){
@@ -273,7 +298,7 @@ export class HistoryComponent implements OnInit{
 
   nextPage(event: PageEvent) {
     let request: Request = {'page': event.pageIndex, 'size': event.pageSize};
-  
+
     this.getHistoryOfRides(request);
   }
 
@@ -299,7 +324,7 @@ export class HistoryComponent implements OnInit{
   openDialog(driverInfo: DriverInfo, locations: MapSearchResult[])
   {
     const dialogRef = this.dialog.open(RouteDetailDialogComponent,{
-      
+
       data:{
         email: driverInfo.email,
         name: driverInfo.name,
@@ -310,14 +335,14 @@ export class HistoryComponent implements OnInit{
     });
 
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {
-      
+
     });
   }
 
   openOrderDialog(locations: MapSearchResult[], ride: Ride)
   {
     const orderDialogRef = this.orderDialog.open(OrderExistingRideDialogComponent,{
-      
+
       data:{
         locations: locations,
         ride: ride
@@ -325,7 +350,7 @@ export class HistoryComponent implements OnInit{
     });
 
     orderDialogRef.afterClosed().subscribe((confirmed: boolean) => {
-      
+
     });
   }
 
@@ -333,7 +358,7 @@ export class HistoryComponent implements OnInit{
   {
     console.log(ride);
     const clientsDialogRef = this.clientsDialog.open(ClientsInfoDialogComponent,{
-      
+
       data:{
         ride: ride,
         locations: locations
@@ -341,7 +366,7 @@ export class HistoryComponent implements OnInit{
     });
 
     clientsDialogRef.afterClosed().subscribe((confirmed: boolean) => {
-      
+
     });
   }
 
