@@ -238,31 +238,6 @@ export class HistoryComponent implements OnInit{
     }
   }
 
-  getRideByVehicleType(){
-    this.rideService.getRideByVehicleType()
-      .subscribe({
-        next: (data) => {
-          console.log(data);
-        },
-        error: (err) => {
-          console.log(err.error.message);
-        },
-      });
-  }
-
-  addWord(){
-    let word = "wow";
-    this.rideService.addWord(word)
-      .subscribe({
-        next: (data) => {
-          console.log(data);
-        },
-        error: (err) => {
-          console.log(err.error.message);
-        },
-      });
-  }
-
   private getHistoryOfRides(request: Request){
       this.rideService.getHistoryOfRides(request, this.emailControl.value ? this.emailControl.value : this.email)
       .subscribe({

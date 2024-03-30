@@ -24,6 +24,7 @@ import { UserProfilePageComponent } from './modules/shared/pages/user-profile-pa
 import { MaterialComponentsModule } from './modules/material-components/material-components.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { LogsComponent } from './modules/shared/pages/logs/logs.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AuthModule } from './modules/auth/auth.module';
     RegisteredSocialAccountComponent,
     UserProfilePageComponent,
     RegisteredAccountPageComponent,
-    RegisteredDriverComponent
+    RegisteredDriverComponent,
+    LogsComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,7 @@ import { AuthModule } from './modules/auth/auth.module';
     FormsModule,
     BrowserAnimationsModule,
     SocialLoginModule,
-    // DragDropModule,   
+    // DragDropModule,
     MaterialComponentsModule,
     AuthModule,
     ToastrModule.forRoot({
@@ -80,7 +82,7 @@ import { AuthModule } from './modules/auth/auth.module';
     },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
 
-  ], 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

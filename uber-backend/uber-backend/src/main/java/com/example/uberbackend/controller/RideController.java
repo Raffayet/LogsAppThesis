@@ -88,14 +88,4 @@ public class RideController {
         Pageable paging = PageRequest.of(page, size);
         return rideService.findEndedDriversRidesByEmail(paging, email);
     }
-
-    @GetMapping("get-all-rides")
-    public Iterable<ElasticRide> getRideByVehicleType() {
-        return rideService.searchRidesByVehicleType();
-    }
-
-    @GetMapping("add-word")
-    public String addWord(@RequestParam String word) {
-        return rideService.addWord(word);
-    }
 }

@@ -21,21 +21,21 @@ import { ToastrService } from 'ngx-toastr';
 export class DriverDashboardComponent {
 
   chatHidden: boolean = false;
-  navbarLabels: string[] = ["Profile", "Rides To Do", "History", "Report"];
-  navbarPaths: string[] = ["profile-page", "rides-to-do", "history", 'report'];
+  navbarLabels: string[] = ["Profile", "Rides To Do", "History", "Report", "Logs"];
+  navbarPaths: string[] = ["profile-page", "rides-to-do", "history", 'report', 'logs'];
   option: string = this.navbarPaths[0];
 
   loggedDriver: User | null;
   stompClient: any;
 
-  changeOption(eventData: string): void{      
+  changeOption(eventData: string): void{
     this.router.navigate(['/driver', {outlets: {'DriverRouter': [eventData]}}]);
   }
 
   constructor(private router: Router, private userService: UserService, private tokenUtilsService: TokenUtilsService, private dialog: MatDialog, private driverService: DriverService, private toaster:ToastrService){}
 
   ngOnInit() {
-    this.loggedDriver = this.tokenUtilsService.getUserFromToken(); 
+    this.loggedDriver = this.tokenUtilsService.getUserFromToken();
     this.blockedUserEvent();
   }
 
@@ -43,7 +43,7 @@ export class DriverDashboardComponent {
     let ws = new SockJS(environment.apiURL + "/ws");
     this.stompClient = Stomp.over(ws);
     this.stompClient.debug = null;
-    
+
     let that = this;
     this.stompClient.connect({}, function () {
       that.openGlobalSocket();
@@ -63,7 +63,7 @@ export class DriverDashboardComponent {
     this.chatHidden = !this.chatHidden;
   }
 
-  logout = () => {     
+  logout = () => {
     this.driverService.resetAfterLogout(this.loggedDriver?.email as string).subscribe();
 
     this.userService.changeUserDrivingStatus(this.tokenUtilsService.getUsernameFromToken() as string, 1).subscribe();

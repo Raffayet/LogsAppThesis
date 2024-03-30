@@ -5,8 +5,9 @@ import { HistoryComponent } from '../shared/components/history/history.component
 import { UserProfilePageComponent } from '../shared/pages/user-profile-page/user-profile-page.component';
 import { RidesToDoComponent } from './pages/rides-to-do/rides-to-do.component';
 import { DriverGuard } from './guard/driver.guard';
+import {LogsComponent} from "../shared/pages/logs/logs.component";
 
-const routes: Routes = [  
+const routes: Routes = [
   {
     path: 'profile-page',
     component: UserProfilePageComponent,
@@ -22,6 +23,12 @@ const routes: Routes = [
   {
     path: 'report',
     component: ReportPageComponent,
+    outlet: 'DriverRouter',
+    canActivate: [DriverGuard],
+  },
+  {
+    path: 'logs',
+    component: LogsComponent,
     outlet: 'DriverRouter',
     canActivate: [DriverGuard],
   },

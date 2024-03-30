@@ -11,6 +11,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterDriverComponent } from './pages/register-driver/register-driver.component';
 import { HistoryComponent } from '../shared/components/history/history.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import {LogsComponent} from "../shared/pages/logs/logs.component";
 
 const routes: Routes = [
   {
@@ -36,7 +37,14 @@ const routes: Routes = [
     component: ReportPageComponent,
     outlet: 'AdminRouter',
     canActivate: [AdminGuard],
-  },{
+  },
+  {
+    path: 'logs',
+    component: LogsComponent,
+    outlet: 'AdminRouter',
+    canActivate: [AdminGuard],
+  },
+  {
     path: 'livechat',
     component: LivechatComponent,
     outlet: 'AdminRouter',

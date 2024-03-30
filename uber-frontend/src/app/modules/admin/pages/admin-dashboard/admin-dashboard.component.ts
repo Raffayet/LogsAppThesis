@@ -26,7 +26,13 @@ export class AdminDashboardComponent {
       label:'Report',
       icon: 'bar_chart',
       router: 'report'
-    },{
+    },
+    {
+      label:'Logs',
+      icon: 'description',
+      router: 'logs'
+    },
+    {
       label:'Live Chat',
       icon: 'chat',
       router: 'livechat'
@@ -44,7 +50,7 @@ export class AdminDashboardComponent {
   constructor(private router: Router, private userService:UserService){}
 
   ngOnInit() {
-    
+
   }
 
   LogOut(){

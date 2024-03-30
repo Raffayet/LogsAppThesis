@@ -22,7 +22,13 @@ export class HomepageComponent {
       label:'Report',
       icon: 'bar_chart',
       router: 'report'
-    },{
+    },
+    {
+      label:'Logs',
+      icon: 'description',
+      router: 'logs'
+    },
+    {
       label:'Live Chat',
       icon: 'chat',
       router: 'livechat'
@@ -44,7 +50,7 @@ export class HomepageComponent {
     if(item.router === 'logout'){
       this.userService.logOut();
     }
-    else 
+    else
       this.router.navigate(['/admin', {outlets: {'AdminRouter': [item.router]}}])
   }
 }

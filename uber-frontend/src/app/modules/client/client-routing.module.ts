@@ -6,8 +6,9 @@ import { RideRequestPageComponent } from 'src/app/modules/client/pages/ride-requ
 import { HistoryComponent } from '../shared/components/history/history.component';
 import { UserProfilePageComponent } from '../shared/pages/user-profile-page/user-profile-page.component';
 import { ClientDashboardComponent } from './pages/client-dashboard/client-dashboard.component';
+import {LogsComponent} from "../shared/pages/logs/logs.component";
 
-const routes: Routes = [  
+const routes: Routes = [
   {
     path: 'request-ride-page',
     component: RideRequestPageComponent,
@@ -32,7 +33,13 @@ const routes: Routes = [
     outlet: 'ClientRouter',
     canActivate: [ClientGuard],
   },
-  
+  {
+    path: 'logs',
+    component: LogsComponent,
+    outlet: 'ClientRouter',
+    canActivate: [ClientGuard],
+  },
+
 ];
 
 @NgModule({

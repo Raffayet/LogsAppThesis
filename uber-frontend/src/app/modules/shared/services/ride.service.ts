@@ -32,19 +32,4 @@ export class RideService {
 
     return this.http.get<any>(environment.apiURL + "/rides/get-all-drivers-rides", { params: queryParams});
   }
-
-  getRideByVehicleType(): Observable<any>{
-    let queryParams = new HttpParams();
-    queryParams = queryParams.append("format", "json");
-
-    return this.http.get<any>(environment.apiURL + "/rides/get-all-rides", { params: queryParams});
-  }
-
-  addWord(word: string): Observable<any>{
-    let queryParams = new HttpParams();
-    queryParams = queryParams.append("format", "json");
-    queryParams = queryParams.append("word", word);
-
-    return this.http.post<any>(environment.apiURL + "/rides/add-word", { params: queryParams});
-  }
 }
