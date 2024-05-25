@@ -151,6 +151,28 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+			<version>2.7.5</version> <!-- Use the version that matches Spring Boot -->
+		</dependency>
+
+		<!-- Elasticsearch High-Level REST Client -->
+		<dependency>
+			<groupId>org.elasticsearch.client</groupId>
+			<artifactId>elasticsearch-rest-high-level-client</artifactId>
+			<version>7.17.3</version> <!-- Explicitly specify the version -->
+		</dependency>
+
+		<!-- Elasticsearch Core -->
+		<dependency>
+			<groupId>org.elasticsearch</groupId>
+			<artifactId>elasticsearch</artifactId>
+			<version>7.17.3</version> <!-- Explicitly specify the version -->
+		</dependency>
+
+		<!-- Elasticsearch Client -->
+		<dependency>
+			<groupId>org.elasticsearch.client</groupId>
+			<artifactId>elasticsearch-rest-client</artifactId>
+			<version>7.17.3</version> <!-- Explicitly specify the version -->
 		</dependency>
 
 		<dependency>

@@ -1,11 +1,13 @@
 package com.example.uberbackend;
 
+import java.time.Instant;
 import com.example.uberbackend.model.elastic.ElasticLog;
 import com.example.uberbackend.model.elastic.ElasticRide;
 import com.example.uberbackend.repositories.elastic.ElasticLogRepository;
 import com.example.uberbackend.repositories.elastic.ElasticRideRepository;
-import org.joda.time.Instant;
 import org.joda.time.LocalDateTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,32 +28,26 @@ public class UberBackendApplication {
 	private final ElasticLogRepository elasticLogRepository;
 	private final ElasticRideRepository elasticRideRepository;
 
+	private static final Logger logger = LoggerFactory.getLogger(UberBackendApplication.class);
+
 	public UberBackendApplication(ElasticLogRepository elasticLogRepository, ElasticRideRepository elasticRideRepository) {
 		this.elasticLogRepository = elasticLogRepository;
 		this.elasticRideRepository = elasticRideRepository;
 	}
 
 	@PostConstruct
-	public void initElasticLogs(){
-		// First deleting all in order to prevent from redundant data storing in elastic search db
-		ElasticLog elasticLog = new ElasticLog();
-		elasticLog.setLogType("");
-		elasticLog.setTimestamp(Instant.now());
-
+	public void initElasticLogs() {
 		try {
-			elasticLogRepository.save(elasticLog);
+			ElasticLog log = new ElasticLog();
+			log.setId("456");
+			log.setLogType("INFO");
+			log.setTimestamp(Instant.now());
+
+			elasticLogRepository.save(log);
+			System.out.println("Log saved successfully");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-//		elasticLogRepository.deleteAll();
-//
-//		IntStream.range(0, 3).mapToObj(i -> {
-//			ElasticLog elasticLog = new ElasticLog();
-//			elasticLog.setLogType("");
-//			elasticLog.setTimestamp(LocalDateTime.now());
-//			return elasticLog;
-//		}).forEach(elasticLogRepository::save);
 	}
 
 	public static void main(String[] args) {

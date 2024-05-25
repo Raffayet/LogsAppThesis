@@ -97,6 +97,7 @@ public class ClientServiceTests {
         Mockito.when(clientRepository.findByEmail(driveRequestDto.getInitiatorEmail())).thenReturn(Optional.empty());
 
         assertThrows(UsernameNotFoundException.class,()->clientService.createDriveRequest(driveRequestDto));
+        assertEquals(0, driveRequestDto.getPeople().size());
         verify(clientRepository, times(1)).findByEmail(driveRequestDto.getInitiatorEmail());
     }
 

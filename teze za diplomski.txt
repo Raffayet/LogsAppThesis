@@ -22,3 +22,31 @@ server.ssl.keyStoreType=JKS
 server.ssl.keyAlias=spring-alias
 
 - memory allocation from elastic search - heap_size.options - 4gb
+
+- included joda.Instant converter for long values in elasticsearch:
+@Configuration
+public class CustomElasticsearchConfig {
+
+    @Bean
+    public ElasticsearchCustomConversions elasticsearchCustomConversions() {
+        return new ElasticsearchCustomConversions(
+                Arrays.asList(new LongToJodaInstantConverter())
+        );
+    }
+
+}
+@ReadingConverter
+public class LongToJodaInstantConverter implements Converter<Long, Instant> {
+
+    @Override
+    public Instant convert(Long source) {
+        return new Instant(source);
+    }
+}
+
+<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-joda</artifactId>
+			<version>2.13.0</version> <!-- Use the appropriate version matching your Jackson setup -->
+		</dependency>
+

@@ -26,7 +26,7 @@ export class LogsComponent implements OnInit{
 
   logs: ElasticLog[] = [];
 
-  displayedColumns = ['id', 'logType'];
+  displayedColumns = ['id', 'logType', 'timestamp'];
 
   constructor(private logService: LogService) {
   }
@@ -34,9 +34,9 @@ export class LogsComponent implements OnInit{
   getLogsByLogType(request: Request)
   {
     this.logService.getLogsByLogType(request, this.logTypeControl.value as string).subscribe({
-      next: (data: ElasticLog[]) => {
-        this.logs = data
-        console.log(data);
+      next: (data: any) => {
+        this.logs = data.content;
+        console.log(this.logs);
       },
       error: (err: HttpErrorResponse) => {
         console.log(err.error.message);
