@@ -35,20 +35,20 @@ public class UberBackendApplication {
 		this.elasticRideRepository = elasticRideRepository;
 	}
 
-	@PostConstruct
-	public void initElasticLogs() {
-		try {
-			ElasticLog log = new ElasticLog();
-			log.setId("456");
-			log.setLogType("INFO");
-			log.setTimestamp(Instant.now());
-
-			elasticLogRepository.save(log);
-			System.out.println("Log saved successfully");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	@PostConstruct
+//	public void initElasticLogs() {
+//		try {
+//			ElasticLog log = new ElasticLog();
+//			log.setId("456");
+//			log.setLogType("INFO");
+//			log.setTimestamp(Instant.now());
+//
+//			elasticLogRepository.save(log);
+//			System.out.println("Log saved successfully");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(UberBackendApplication.class, args);

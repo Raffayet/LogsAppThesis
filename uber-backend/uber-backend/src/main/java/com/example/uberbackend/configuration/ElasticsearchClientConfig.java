@@ -42,25 +42,25 @@ public class ElasticsearchClientConfig {
     @Value("${elasticsearch.password}")
     private String password;
 
-    @Bean(destroyMethod = "close")
-    public RestHighLevelClient restHighLevelClient() {
-        final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-        credentialsProvider.setCredentials(AuthScope.ANY,
-                new UsernamePasswordCredentials(userName, password));
-
-        RestClientBuilder builder = RestClient.builder(new HttpHost(host, port, protocol))
-                .setHttpClientConfigCallback(httpClientBuilder -> {
-                    try {
-                        return httpClientBuilder
-                                .setDefaultCredentialsProvider(credentialsProvider)
-                                .setSSLContext(SSLContextBuilder.create().loadTrustMaterial(null, (X509Certificate[] chain, String authType) -> true).build());
-                    } catch (KeyManagementException | NoSuchAlgorithmException | KeyStoreException e) {
-                        throw new RuntimeException(e);
-                    }
-                });
-
-        return new RestHighLevelClient(builder);
-    }
+//    @Bean(destroyMethod = "close")
+//    public RestHighLevelClient restHighLevelClient() {
+//        final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+//        credentialsProvider.setCredentials(AuthScope.ANY,
+//                new UsernamePasswordCredentials(userName, password));
+//
+//        RestClientBuilder builder = RestClient.builder(new HttpHost(host, port, protocol))
+//                .setHttpClientConfigCallback(httpClientBuilder -> {
+//                    try {
+//                        return httpClientBuilder
+//                                .setDefaultCredentialsProvider(credentialsProvider)
+//                                .setSSLContext(SSLContextBuilder.create().loadTrustMaterial(null, (X509Certificate[] chain, String authType) -> true).build());
+//                    } catch (KeyManagementException | NoSuchAlgorithmException | KeyStoreException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                });
+//
+//        return new RestHighLevelClient(builder);
+//    }
 
     private Header[] compatibilityHeaders() {
         return new Header[]{
