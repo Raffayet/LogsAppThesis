@@ -1,4 +1,4 @@
-- install elasticsearch & kibana
+- install elasticsearch & kibana & logstash
 - podesavanje sertifikata
 - pokretanje elasticsearch.bat i kibana.bat skripti
 - @Document(indexName = "ride") u model Ride
@@ -50,3 +50,11 @@ public class LongToJodaInstantConverter implements Converter<Long, Instant> {
 			<version>2.13.0</version> <!-- Use the appropriate version matching your Jackson setup -->
 		</dependency>
 
+**POKRETANJE ELK STACKA***
+
+1) C:\ELK\elasticsearch-8.14.1\bin>elasticsearch.bat
+2) kreirana skripa koja postavlja privremeno varijablu na JAVA_HOME = 11 version - C:\ELK\logstash-8.14.1\bin\run_logstash
+3) C:\ELK\logstash-8.14.1\bin>run_logstash.bat
+4) C:\ELK\kibana-8.14.1\bin> kibana.bat
+5) access - http://localhost:5601/app/home#/
+6) Visualize library - create new visualization
