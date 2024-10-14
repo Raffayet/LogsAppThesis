@@ -1,0 +1,47 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype polyline
+
+class ActivateAccountToken
+class Admin
+class Client
+class DriveRequest
+class Driver
+class FavoriteRoute
+class Message
+class Order
+class Point
+class Rating
+class Ride
+class RideInvite
+class Role
+class Route
+class User
+class Vehicle
+class VehicleType
+
+ActivateAccountToken "1" *-[#595959,plain]-> "user\n1" User                 
+Admin                 -[#000082,plain]-^  User                 
+Client               "1" *-[#595959,plain]-> "driveRequests\n*" DriveRequest         
+Client               "1" *-[#595959,plain]-> "favoriteRoutes\n*" FavoriteRoute        
+Client               "1" *-[#595959,plain]-> "takenRides\n*" Ride                 
+Client                -[#000082,plain]-^  User                 
+DriveRequest         "1" *-[#595959,plain]-> "people\n*" Client               
+DriveRequest         "1" *-[#595959,plain]-> "driversThatRejected\n*" Driver               
+Driver               "1" *-[#595959,plain]-> "currentLocation\n1" Point                
+Driver               "1" *-[#595959,plain]-> "ratingsFromClients\n*" Rating               
+Driver               "1" *-[#595959,plain]-> "rides\n*" Ride                 
+Driver                -[#000082,plain]-^  User                 
+Driver               "1" *-[#595959,plain]-> "vehicle\n1" Vehicle              
+FavoriteRoute        "1" *-[#595959,plain]-> "client\n1" Client               
+Point                "1" *-[#595959,plain]-> "route\n1" Route                
+Rating               "1" *-[#595959,plain]-> "client\n1" Client               
+Rating               "1" *-[#595959,plain]-> "driver\n1" Driver               
+Ride                 "1" *-[#595959,plain]-> "clients\n*" Client               
+Ride                 "1" *-[#595959,plain]-> "driver\n1" Driver               
+Route                "1" *-[#595959,plain]-> "points\n*" Point                
+User                 "1" *-[#595959,plain]-> "role\n1" Role                 
+Vehicle              "1" *-[#595959,plain]-> "vehicleType\n1" VehicleType          
+@enduml

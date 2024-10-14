@@ -201,17 +201,35 @@ public class DriverService {
     }
 
     public void rejectDrive(DriverRejectionDto driverRejectionDto) {
-        Optional<Driver> driver = Optional.ofNullable(this.driverRepository.findByEmail(driverRejectionDto.getDriverEmail()).orElseThrow(DriverNotFoundException::new));
-        Optional<DriveRequest> driveRequest = Optional.ofNullable(this.driveRequestRepository.findById(driverRejectionDto.getRequestId()).orElseThrow(DriveRequestNotFoundException::new));
+        Optional<Driver> driver = Optional.ofNullable(
+                this.driverRepository.findByEmail(driverRejectionDto.getDriverEmail())
+                        .orElseThrow(DriverNotFoundException::new)
+        );
+        Optional<DriveRequest> driveRequest = Optional.ofNullable(
+                this.driveRequestRepository.findById(driverRejectionDto.getRequestId())
+                        .orElseThrow(DriveRequestNotFoundException::new)
+        );
 
         if(driveRequest.isPresent() && driver.isPresent())
         {
             driveRequest.get().getDriversThatRejected().add(driver.get());
             this.driveRequestRepository.save(driveRequest.get());
-            simpMessagingTemplate.convertAndSendToUser(driveRequest.get().getInitiator().getEmail(), "/response-to-client", new ResponseToIniciatorDto("driverRejected", "Driver " + driver.get().getEmail() + " has rejected this drive request. Reason: " + driverRejectionDto.getReasonForRejection()));
+            simpMessagingTemplate.convertAndSendToUser(
+                    driveRequest.get().getInitiator().getEmail(),
+                    "/response-to-client",
+                    new ResponseToIniciatorDto(
+                            "driverRejected", "Driver " +
+                            driver.get().getEmail() + " has rejected this drive request. Reason: " +
+                            driverRejectionDto.getReasonForRejection()));
             for (Client client: driveRequest.get().getPeople())
             {
-                simpMessagingTemplate.convertAndSendToUser(client.getEmail(), "/response-to-client", new ResponseToIniciatorDto("driverRejected", "Driver " + driver.get().getEmail() + " has rejected this drive request. Reason: " + driverRejectionDto.getReasonForRejection()));
+                simpMessagingTemplate.convertAndSendToUser(
+                        client.getEmail(), "/response-to-client",
+                        new ResponseToIniciatorDto(
+                                "driverRejected",
+                                "Driver " + driver.get().getEmail() +
+                                        " has rejected this drive request. Reason: " +
+                                        driverRejectionDto.getReasonForRejection()));
             }
         }
         createRejection(driverRejectionDto);

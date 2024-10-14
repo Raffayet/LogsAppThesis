@@ -15,9 +15,9 @@ insert into activate_account_token(token, user_id) values ('random_token', 7);
 insert into point(lat,lng) values ( 45.258057892843766, 19.823989494446415);
 insert into point(lat, lng) values( 45.34, 19.78);
 
-insert into message(sender_email, receiver_email, date, content, status) values('sasalukic@gmail.com', 'support', '2022-11-24 14:11:10', 'Hello, I have problem with scheduling drive.', 1);
-insert into message(sender_email, receiver_email, date, content, status) values('support', 'sasalukic@gmail.com', '2022-11-24 14:17:10', 'What is your problem?.', 1);
-insert into message(sender_email, receiver_email, date, content, status) values('sasalukic@gmail.com', 'support', '2022-11-24 14:30:10', 'My back is broken.', 1);
+insert into message(sender_email, receiver_email, date, content, status) values('sasalukic@gmail.com', 'support', '2022-11-24 14:11:10', 'Добар дан, имам проблем. Не могу да закажем вожњу од улице Цара Душана до Ветерника. Да ли знате у чему је проблем?', 1);
+insert into message(sender_email, receiver_email, date, content, status) values('support', 'sasalukic@gmail.com', '2022-11-24 14:17:10', 'Добар дан! Да ли сте проверили да ли имате довољно средстава за плаћање ове руте? Ако немате, можете преузети још токена у форми за заказивање вожње.', 1);
+insert into message(sender_email, receiver_email, date, content, status) values('sasalukic@gmail.com', 'support', '2022-11-24 14:30:10', 'У праву сте, немам довољно средстава. Хвала!', 1);
 
 insert into point(lat, lng) values(45.25, 19.82);
 insert into point(lat, lng) values(45.21, 19.45);

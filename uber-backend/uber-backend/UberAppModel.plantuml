@@ -1,0 +1,33 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class ActivateAccountToken
+class Admin
+class Client
+class CustomOAuth2User
+class DriveRequest
+class Driver
+class DriverInfoChangeRequest
+class FavoriteRoute
+class Message
+class Order
+class Point
+class Rating
+class Rejection
+class Ride
+class RideInvite
+class Role
+class Route
+class User
+class Vehicle
+class VehicleType
+class node5 as "package  com.example.uberbackend.model.elastic" << package >>
+class node10 as "package  com.example.uberbackend.model.enums" << package >>
+
+Admin                    -[#000082,plain]-^  User                    
+Client                   -[#000082,plain]-^  User                    
+Driver                   -[#000082,plain]-^  User                    
+@enduml

@@ -4,10 +4,7 @@ import com.example.uberbackend.dto.CheckForEnoughTokens;
 import com.example.uberbackend.dto.DriveInvitationDto;
 import com.example.uberbackend.dto.DriveRequestDto;
 import com.example.uberbackend.dto.InvitationStatusDto;
-import com.example.uberbackend.model.Client;
-import com.example.uberbackend.model.Driver;
 import com.example.uberbackend.dto.FavoriteRouteDto;
-import com.example.uberbackend.model.FavoriteRoute;
 import com.example.uberbackend.model.RideInvite;
 import com.example.uberbackend.service.ClientService;
 import com.example.uberbackend.task.NotificationScheduler;
@@ -21,21 +18,18 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Email;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.HashMap;
 import java.util.List;
 
 @Controller
 @RequestMapping("/client")
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class ClientController {
+public class ClientController extends BaseController {
 
     private ClientService clientService;
 
@@ -153,6 +147,8 @@ public class ClientController {
         if (result.hasErrors()) {
             return new ResponseEntity<>(result.getFieldErrors(), HttpStatus.BAD_REQUEST);
         }
+
+        logger.info("Adding favorite route: " + favoriteRouteDto.toString());
 
         Boolean res = this.clientService.addFavoriteRoute(favoriteRouteDto);
         return ResponseEntity.ok(res);
