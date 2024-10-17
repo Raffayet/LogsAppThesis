@@ -199,6 +199,11 @@
 			<version>2.13.0</version> <!-- Use the appropriate version matching your Jackson setup -->
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
 
 	</dependencies>
 	<build>

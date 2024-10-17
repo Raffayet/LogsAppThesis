@@ -6,8 +6,11 @@ import com.example.uberbackend.dto.RegisterDriverDto;
 import com.example.uberbackend.dto.RegisterDto;
 import com.example.uberbackend.dto.UserDrivingStatus;
 import com.example.uberbackend.model.enums.DrivingStatus;
+import com.example.uberbackend.repositories.jpa.RideRepository;
 import com.example.uberbackend.security.JwtTokenGenerator;
 import com.example.uberbackend.service.DriverService;
+import com.example.uberbackend.service.MapService;
+import com.example.uberbackend.service.RideService;
 import com.example.uberbackend.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -37,6 +40,7 @@ public class DriverController {
     private final DriverService driverService;
     private final SimpMessagingTemplate simpMessagingTemplate;
     private final JwtTokenGenerator tokenGenerator;
+    private final MapService mapService;
 
     @PutMapping(value = "/update-personal-info")
     public ResponseEntity<?> updatePersonalInfo(@RequestBody PersonalInfoUpdateDto dto){
@@ -124,6 +128,7 @@ public class DriverController {
         DriverInfoDto driverInfoDto;
         try {
             driverInfoDto = this.driverService.getDriverInfoByRideId(rideId);
+            this.mapService.transferMapsToKibana(rideId);
         } catch (Exception ex) {
             return new ResponseEntity<String>(ex.getMessage(), HttpStatus.BAD_REQUEST);
         }

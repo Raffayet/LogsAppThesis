@@ -1,9 +1,12 @@
 package com.example.uberbackend.service;
 
+import com.example.uberbackend.dto.MapSearchResultDto;
 import com.example.uberbackend.dto.PathInfoDto;
 import com.example.uberbackend.exception.NotEnoughPointsForRouteException;
 import com.example.uberbackend.exception.TooManyPointsForRouteException;
 import com.example.uberbackend.model.Point;
+import com.example.uberbackend.model.Ride;
+import com.example.uberbackend.repositories.jpa.RideRepository;
 import org.springframework.beans.factory.annotation.Value;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -16,9 +19,15 @@ import java.util.*;
 @Service
 public class MapService {
 
+    private final RideRepository rideRepository;
+
     @Value("${graphhopper.api.key}")
     private String graphhopperApiKey;
-    
+
+    public MapService(RideRepository rideRepository) {
+        this.rideRepository = rideRepository;
+    }
+
     public PathInfoDto getOptimalRoute(List<Point> points) throws IOException {
         OkHttpClient client = new OkHttpClient();
         String queryParams = new String();
@@ -121,5 +130,11 @@ public class MapService {
             i++;
         }
         return new PathInfoDto(retList, distance);
+    }
+
+    public void transferMapsToKibana(Long rideId) {
+        Ride ride = this.rideRepository.findById(rideId).orElseThrow();
+        MapSearchResultDto startLocation = ride.getLocations().get(0);
+        System.out.println("Start location: " + startLocation.getLat() + " " + startLocation.getLon());
     }
 }

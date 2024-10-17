@@ -31,7 +31,7 @@ export class ReportPageComponent implements OnInit{
     let tomorow = new Date();
     tomorow.setDate(new Date().getDate()+1);
     let lastYear = new Date();
-    lastYear.setFullYear(new Date().getFullYear()-1);
+    lastYear.setFullYear(new Date().getFullYear()-3);
     console.log(tomorow);
     console.log(lastYear);
     this.maxDate = tomorow;
@@ -48,16 +48,16 @@ export class ReportPageComponent implements OnInit{
     this.range.get('start')?.setValue(lastWeek);
     this.range.get('end')?.setValue(today);
     this.generateReport();
-    
+
     this.getUsers();
   }
-  
+
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    
+
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
- 
+
   getUsers() {
     this.userService.getUsers().subscribe({
       next: (data:string[]) => {
@@ -74,7 +74,7 @@ export class ReportPageComponent implements OnInit{
       },
     });
   }
-  
+
   generateReport():void{
       console.log(this.range.value);
       console.log(this.emailControl.value);
@@ -84,7 +84,7 @@ export class ReportPageComponent implements OnInit{
         this.reportService.generateReportForDateRange(dateRange, this.userType==='ADMIN'?selectedUser:null)
           .subscribe({
             next: (response: ReportResponse) => {
-              
+
               const report = this.userType === "ADMIN"&&(!selectedUser || selectedUser==="All Users")?response.adminReport:response;
 
               this.basicData = {
@@ -106,7 +106,7 @@ export class ReportPageComponent implements OnInit{
                 ]
               }
             },
-            error: (err: HttpErrorResponse) => {          
+            error: (err: HttpErrorResponse) => {
               console.log("NEUSPESNO");
             }
           });
