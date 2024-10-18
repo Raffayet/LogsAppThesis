@@ -7,14 +7,23 @@ import com.example.uberbackend.exception.TooManyPointsForRouteException;
 import com.example.uberbackend.model.Point;
 import com.example.uberbackend.model.Ride;
 import com.example.uberbackend.repositories.jpa.RideRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.springframework.stereotype.Service;
 import org.json.*;
+import org.springframework.web.client.RestTemplate;
+
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.*;
+
+import static net.logstash.logback.argument.StructuredArguments.kv;
 
 @Service
 public class MapService {
@@ -23,6 +32,8 @@ public class MapService {
 
     @Value("${graphhopper.api.key}")
     private String graphhopperApiKey;
+
+    private static final Logger logger = LoggerFactory.getLogger("stash");
 
     public MapService(RideRepository rideRepository) {
         this.rideRepository = rideRepository;
@@ -133,8 +144,24 @@ public class MapService {
     }
 
     public void transferMapsToKibana(Long rideId) {
+        Logger logger = LoggerFactory.getLogger(this.getClass());
         Ride ride = this.rideRepository.findById(rideId).orElseThrow();
+
+        // Start location
         MapSearchResultDto startLocation = ride.getLocations().get(0);
-        System.out.println("Start location: " + startLocation.getLat() + " " + startLocation.getLon());
+        // End location
+        MapSearchResultDto endLocation = ride.getLocations().get(ride.getLocations().size() - 1);
+
+        // Log start location as structured data
+        logger.info("Transferring start location to Kibana",
+                kv("location", Map.of("lat", startLocation.getLat(), "lon", startLocation.getLon())),
+                kv("displayName", startLocation.getDisplayName()));
+
+        // Log end location as structured data
+        logger.info("Transferring end location to Kibana",
+                kv("location", Map.of("lat", endLocation.getLat(), "lon", endLocation.getLon())),
+                kv("displayName", endLocation.getDisplayName()));
     }
+
+
 }
